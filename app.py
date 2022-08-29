@@ -3,6 +3,7 @@ import pandas as pd
 import streamlit as st
 from keras.models import load_model
 from sklearn.preprocessing import StandardScaler
+from tensorflow.python import tf2
 from pickle import load
 
 # from churn_model.py import sc
