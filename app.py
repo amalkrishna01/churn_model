@@ -1,15 +1,15 @@
 import numpy as np
 import pandas as pd
 import streamlit as st
-from tensorflow import keras
+from keras.models import load_model
 from sklearn.preprocessing import StandardScaler
-#sc = StandardScaler()
 from pickle import load
 
 # from churn_model.py import sc
 
 
-classifier = keras.models.load_model('ann_model')
+# classifier = keras.models.load_model('ann_model')
+classifier = load_model(("ann_model.h5"))
 
 sc = load(open('sc.pkl','rb'))
 ct = load(open('ct.pkl','rb'))
@@ -74,7 +74,7 @@ def main():
     
     if st.button("Predict"):
         result = predict_note_authentication(credit_score,country,Gender,age,tenure,bal,num_prod,memo[cred_card],memo[active],est_sal)
-    st.success('Is {} leave? {}'.format(gen_map[Gender],result))
+    st.success('Is {} going to leave? {}'.format(gen_map[Gender],result))
                
     
     
